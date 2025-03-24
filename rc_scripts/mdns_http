@@ -1,0 +1,40 @@
+#!/bin/sh
+#
+# PROVIDE: mdns_http
+# REQUIRE: mdnsd DAEMON
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name="mdns_http"
+rcvar="mdns_http_enable"
+pidfile="/var/run/mdns_http.pid"
+command="/usr/sbin/daemon"
+command_args="-p ${pidfile} -f /home/matuzalem/bin/mdns_http.sh"
+
+load_rc_config $name
+: ${mdns_http_enable:=no}
+
+mdns_http_stop() {
+    if [ -f "${pidfile}" ]; then
+        kill `cat ${pidfile}` 2>/dev/null
+        # Give the process time to exit
+        sleep 1
+        rm -f ${pidfile}
+    fi
+}
+
+mdns_http_status() {
+    if [ -f "${pidfile}" ] && kill -0 `cat ${pidfile}` 2>/dev/null; then
+        echo "mdns_http is running (pid `cat ${pidfile}`)"
+        return 0
+    else
+        echo "mdns_http is not running"
+        return 1
+    fi
+}
+
+stop_cmd="mdns_http_stop"
+status_cmd="mdns_http_status"
+
+run_rc_command "$1"

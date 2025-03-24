@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# PROVIDE: mdns_wayvnc
+# REQUIRE: mdnsd DAEMON
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name="mdns_wayvnc"
+rcvar="mdns_wayvnc_enable"
+pidfile="/var/run/mdns_wayvnc.pid"
+command="/usr/sbin/daemon"
+command_args="-p ${pidfile} -f /home/matuzalem/bin/mdns_wayvnc.sh"
+
+load_rc_config $name
+: ${mdns_wayvnc_enable:=no}
+
+mdns_wayvnc_stop() {
+    if [ -f "${pidfile}" ]; then
+        kill `cat ${pidfile}` 2>/dev/null
+        sleep 1
+        rm -f ${pidfile}
+    fi
+}
+
+mdns_wayvnc_status() {
+    if [ -f "${pidfile}" ] && kill -0 `cat ${pidfile}` 2>/dev/null; then
+        echo "mdns_wayvnc is running (pid `cat ${pidfile}`)"
+        return 0
+    else
+        echo "mdns_wayvnc is not running"
+        return 1
+    fi
+}
+
+stop_cmd="mdns_wayvnc_stop"
+status_cmd="mdns_wayvnc_status"
+
+run_rc_command "$1"

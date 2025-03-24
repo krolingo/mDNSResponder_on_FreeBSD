@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# PROVIDE: mdns_rfb
+# REQUIRE: mdnsd DAEMON
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name="mdns_rfb"
+rcvar="mdns_rfb_enable"
+pidfile="/var/run/mdns_rfb.pid"
+command="/usr/sbin/daemon"
+command_args="-p ${pidfile} -f /home/matuzalem/bin/mdns_rfb.sh"
+
+load_rc_config $name
+: ${mdns_rfb_enable:=no}
+
+mdns_rfb_stop() {
+    if [ -f "${pidfile}" ]; then
+        kill `cat ${pidfile}` 2>/dev/null
+        sleep 1
+        rm -f ${pidfile}
+    fi
+}
+
+mdns_rfb_status() {
+    if [ -f "${pidfile}" ] && kill -0 `cat ${pidfile}` 2>/dev/null; then
+        echo "mdns_rfb is running (pid `cat ${pidfile}`)"
+        return 0
+    else
+        echo "mdns_rfb is not running"
+        return 1
+    fi
+}
+
+stop_cmd="mdns_rfb_stop"
+status_cmd="mdns_rfb_status"
+
+run_rc_command "$1"
