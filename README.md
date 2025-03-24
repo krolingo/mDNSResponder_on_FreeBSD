@@ -204,6 +204,7 @@ By using mDNSResponder instead of Avahi on FreeBSD, you get:
 
 ## 👨‍💻 **Contributing**  
 Feel free to open an issue or submit a pull request if you encounter any issues or have suggestions for improvements. 😎
+Also, you will need to change the username or move your scripts to /usr/local/bin.
 
 ---
 
