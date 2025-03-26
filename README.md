@@ -202,7 +202,6 @@ root       1427   0.0  0.0  12732  2148  -  Is   16:30    0:00.00 daemon: /home/
 root       1431   0.0  0.0  12732  2152  -  Is   16:30    0:00.00 daemon: /home/matuzalem/bin/mdns_wayvnc.sh[1432] (daemon)
 root       1435   0.0  0.0  12732  2152  -  Is   16:30    0:00.00 daemon: /home/matuzalem/bin/mdns_hostname.sh[1436] (daemon)
 root       1487   0.0  0.0  12732  2160  -  Is   16:30    0:00.00 daemon: /home/matuzalem/bin/mdns_afp.sh[1488] (daemon)
-matuzalem  2512   0.0  0.0  12796  2376  0  S+   16:37    0:00.00 grep --color mdns
 ```
 
 - Check for firewall rules blocking multicast DNS (UDP port 5353).  
