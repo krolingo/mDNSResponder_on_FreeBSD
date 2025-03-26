@@ -6,6 +6,9 @@ Using Apple's mDNSResponder for Zero-Configuration Networking on FreeBSD
 ## 🚀 **Introduction**  
 This project configures **mDNSResponder** (`mDNSResponder-2200.140.11`) — Apple's official implementation of Bonjour — to provide zero-configuration networking on FreeBSD. This version is the **same as the one used in macOS Sonoma 14.5**, ensuring excellent compatibility with Apple devices and services.  
 
+### Installed from pkg
+`pkg install mDNSResponder-2200.140.11`
+
 ---
 
 ## 💡 **Why mDNSResponder Instead of Avahi?**  
