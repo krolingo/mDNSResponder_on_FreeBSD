@@ -20,7 +20,7 @@ While Avahi is the most common mDNS solution on Linux, mDNSResponder offers seve
 
 ---
 
-### ✅ **Superior Compatibility with Apple Ecosystem**  
+### ✅ ** Probably Superior Compatibility with Apple Ecosystem**  
 - mDNSResponder is Apple's official implementation of Bonjour, ensuring **native compatibility** with macOS and iOS devices.  
 - Avahi is a reverse-engineered alternative that can lead to subtle compatibility issues with Apple products.  
 
@@ -32,7 +32,7 @@ While Avahi is the most common mDNS solution on Linux, mDNSResponder offers seve
 
 ---
 
-### ✅ **Cross-Platform and Better FreeBSD Support**  
+### ✅ **Cross-Platform and Better FreeBSD Support (less buggy for sure)**  
 - Avahi is more tied to Linux and may have **compatibility issues** when used on FreeBSD.  
 - mDNSResponder has been adapted for FreeBSD and provides consistent behavior across Unix-like systems.  
 
